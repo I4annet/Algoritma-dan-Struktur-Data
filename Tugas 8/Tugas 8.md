@@ -1,6 +1,11 @@
-# Jobsheet 8
+# Jobsheet 8 : Stack
+### Nama : Ivansyah Eka Oktaviadi Santoso
+### Kelas : 1B
+### NIM : 2341720126
+### Absen : 16
 
 ## Percobaan 1: Penyimpanan Tumpukan Barang dalam Gudang
+
 
 ```java
 /**
