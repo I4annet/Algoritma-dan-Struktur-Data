@@ -148,6 +148,64 @@ public class Utama16 {
 }
 ```            
 ## Verifikasi Hasil Percobaan 
+```java
+Menu:
+1. Tambah barang
+2. Ambil barang
+3. Tampilkan tumpukan barang
+4. Cari Barang
+5. Keluar
+Pilih operasi:  1
+Masukkan kode barang: 21
+Masukkan nama barang: Majalah
+Masukkan nama kategori: Buku
+Barang Majalah berhasil ditambahkan ke Gudang
+
+Menu:
+1. Tambah barang
+2. Ambil barang
+3. Tampilkan tumpukan barang
+4. Cari Barang
+5. Keluar
+Pilih operasi:  1
+Masukkan kode barang: 26
+Masukkan nama barang: Jaket
+Masukkan nama kategori: Pakaian
+Barang Jaket berhasil ditambahkan ke Gudang
+
+Menu:
+1. Tambah barang
+2. Ambil barang
+3. Tampilkan tumpukan barang
+4. Cari Barang
+5. Keluar
+Pilih operasi:  2
+Barang Jaket diambil dari Gudang
+
+Menu:
+1. Tambah barang
+2. Ambil barang
+3. Tampilkan tumpukan barang
+4. Cari Barang
+5. Keluar
+Pilih operasi:  1
+Masukkan kode barang: 33
+Masukkan nama barang: Pizza
+Masukkan nama kategori: Makanan
+Barang Pizza berhasil ditambahkan ke Gudang
+
+Menu:
+1. Tambah barang
+2. Ambil barang
+3. Tampilkan tumpukan barang
+4. Cari Barang
+5. Keluar
+Pilih operasi:  3
+Rincian tumpukan barang di Gudang:
+Kode: 21, Nama: Majalah, (Kategori: Buku
+ ) Kode: 33, Nama: Pizza, (Kategori: Makanan
+ )
+ ```
 
 
 
@@ -160,7 +218,69 @@ programnya!
 3. Mengapa perlu pengecekan kondisi !cekKosong() pada method tampilkanBarang? Kalau kondisi 
 tersebut dihapus, apa dampaknya? 
 4. Modifikasi kode program pada class Utama sehingga pengguna juga dapat memilih operasi lihat 
-barang teratas, serta dapat secara bebas menentukan kapasitas gudang! 
+barang teratas, serta dapat secara bebas menentukan kapasitas gudang!
+```java
+import java.util.Scanner;
+
+public class Utama16 {
+    public static void main(String[] args) {
+        Gudang16 gudang = new Gudang16(7);
+        Scanner sc = new Scanner(System.in);
+        while (true) { 
+            System.out.println("\nMenu: ");
+            System.out.println("1. Tambah barang ");
+            System.out.println("2. Ambil barang ");
+            System.out.println("3. Tampilkan tumpukan barang ");
+            System.out.println("4. Cari Barang");
+            System.out.println("5. Lihat Barang Teratas");
+            System.out.print("Pilih operasi:  ");
+            int pilihan = sc.nextInt();
+            sc.nextLine();
+
+        switch (pilihan) {
+            case 1:
+                System.out.print("Masukkan kode barang: ");
+                int kode = sc.nextInt();
+                sc.nextLine();
+                System.out.print("Masukkan nama barang: ");
+                String nama = sc.nextLine();
+                System.out.print("Masukkan nama kategori: ");
+                String kategori = sc.nextLine();
+                Barang16 barangBaru = new Barang16(kode, nama, kategori);
+                gudang.tambahBarang(barangBaru);
+                break;
+
+            case 2:
+            gudang.ambilBarang16();
+            break;
+
+            case 3:
+            gudang.tampilkanBarang();
+            break;
+
+            
+            case 4:
+            System.out.print("Masukkan kode atau nama barang yang ingin dicari: ");
+            String Nama = sc.nextLine();
+            kode =  sc.nextInt();
+            if (gudang.cariBarang(Nama, kode)) {
+                System.out.println("Barang ditemukan: ");
+            } else {
+                System.out.println("Barang tidak ditemukan");
+            }
+            break;
+        
+            case 5:
+            gudang.lihatBarangTeratas();
+            break;
+
+            default:
+            System.out.println("Pilihan tidak valid. Coba lagi.");
+        }
+        }
+    }
+}
+```
 5. Commit dan push kode program ke Github
 
 
@@ -236,6 +356,29 @@ public Barang16 ambilBarang16() {
 ```
 
 ## Verifikasi Hasil Percobaan 
+```java
+Menu:
+1. Tambah barang
+2. Ambil barang
+3. Tampilkan tumpukan barang
+4. Cari Barang
+5. Keluar
+Pilih operasi:  1
+Masukkan kode barang: 13
+Masukkan nama barang: Setrika 
+Masukkan nama kategori: Elektronik 
+Barang Setrika  berhasil ditambahkan ke Gudang
+
+Menu:
+1. Tambah barang
+2. Ambil barang
+3. Tampilkan tumpukan barang
+4. Cari Barang
+5. Keluar
+Pilih operasi:  2
+Barang Setrika  diambil dari Gudang
+Kode unik dalam biner: 1101
+```
 
 ## Pertanyaan 2
 1. Pada method konversiDesimalKeBiner, ubah kondisi perulangan menjadi while (kode != 0), 
@@ -337,6 +480,10 @@ public class PostfixMain16 {
 ```
 
 ## Verifikasi Hasil Percobaan 
+```java
+Masukkan ekspresi matematika (infix): a+b*(c+d-e)/f
+Postfix: abcd+e-*f/+
+```
 
 
 ## Pertanyaan 3

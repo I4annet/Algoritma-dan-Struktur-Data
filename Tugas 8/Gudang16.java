@@ -70,6 +70,7 @@ public class Gudang16 {
             System.out.println("Tumpukan barang kosong ");
         }
     }
+    
     public String konversiDesimalkeBiner(int kode) {
         StackKonversi16 stack = new StackKonversi16();
         while (kode > 0) {
@@ -82,5 +83,25 @@ public class Gudang16 {
             biner += stack.pop();
         }
         return biner;
+    }
+    
+    public Barang16 lihatBarangTerbawah() {
+        if (!cekKosong()) {
+            return tumpukan[0];
+        } else {
+            System.out.println("Tumpukan barang kosong");
+            return null;
+        }
+    }
+    
+    public boolean cariBarang(String Nama, int kode) {
+        if (!cekKosong()) {
+            for(Barang16 barang : tumpukan) {
+                if (barang.kode == kode || barang.nama.equals(Nama)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

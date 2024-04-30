@@ -18,6 +18,7 @@ public class Showroom {
             this.topPower = topPower;
         }
     }
+
     public static void main(String[] args) {
         Car[] cars = new Car[] {
             new Car("BMW", "M2 Coupe", 2016, 6816, 728),
@@ -29,5 +30,40 @@ public class Showroom {
             new Car("Toyota", "86/GT86", 2014, 4180, 609),
             new Car("Volkswagen", "Golf GTI", 2014, 4180, 631),
         };
+
+        System.out.println("Highest Top Acceleration: " + maxTopAcceleration(cars, 0, cars.length-1));
+        System.out.println("Lowest Top Acceleration: " + minTopAcceleration(cars, 0, cars.length-1));
+        
+        double totalTopPower = 0;
+
+        for(int i=0; i < cars.length; i++) {
+            totalTopPower += cars[i].topPower;
+        }
+
+        double avgTopPower = totalTopPower / cars.length;
+
+        System.out.println("Average Top Power: " + avgTopPower);
+    }
+
+    static int maxTopAcceleration(Car[] carArray, int low, int high) {
+        if (low == high) {
+            return carArray[low].topAcceleration;
+        }
+        int mid = (low + high) / 2;
+
+        return Math.max(carArray[mid].topAcceleration,
+                        Math.max(maxTopAcceleration(carArray, low, mid),
+                                 maxTopAcceleration(carArray, mid + 1, high)));
+    }
+
+    static int minTopAcceleration(Car[] carArray, int low, int high) {
+        if (low == high) {
+            return carArray[low].topAcceleration;
+        }
+        int mid = (low + high) / 2;
+
+        return Math.min(carArray[mid].topAcceleration,
+                        Math.min(minTopAcceleration(carArray, low, mid),
+                                 minTopAcceleration(carArray, mid + 1, high)));
     }
 }
