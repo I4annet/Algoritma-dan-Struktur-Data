@@ -15,8 +15,6 @@ public class Queue {
     }
     public boolean IsEmpty() {
         if (size == 0) {
-            System.out.println("Queue Underflow");
-            System.exit(0);
             return true;
         } else {
             return false;
@@ -24,8 +22,6 @@ public class Queue {
     }
     public boolean IsFull() {
         if (size == max) {
-            System.out.println("Queue Overflow");
-            System.exit(0);
             return true;
         } else {
             return false;
