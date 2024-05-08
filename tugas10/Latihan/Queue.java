@@ -76,7 +76,7 @@ public class Queue {
 }
     public void peek() {
         if (!IsEmpty()) {
-            System.out.println("Antrian terdepan : " + antrian[front].nama + " " + antrian[front].noHp + " ");
+            System.out.println("Antrian terdepan : " + antrian[front].nama);
         } else {
             System.out.println("Pembeli masih kosong");
         }
@@ -93,14 +93,14 @@ public class Queue {
     public void peekPosition(String nama) {
         boolean found = false;
         int pos = -1;
-        for (int i = 0; i < size; i++) {
+        for (int i = front; i <= rear; i++) {
             if (antrian[i].equals(nama)) {
             found = true;
             pos = i;
             break;
         }
         if (found) {
-            System.out.println("Pembeli dengan nama " + nama + " berada pada posisi antrian ke-" + (pos + 1));
+            System.out.println("Pembeli dengan nama " + nama + " berada pada posisi antrian ke-" + (pos - front + 1));
         } else {
             System.out.println("Pembeli dengan nama" + nama + "tidak ditemukan");
         }

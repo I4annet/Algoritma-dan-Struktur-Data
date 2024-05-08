@@ -15,6 +15,8 @@ public class Queue {
     }
     public boolean IsEmpty() {
         if (size == 0) {
+            System.out.println("Queue Underflow");
+            System.exit(0);
             return true;
         } else {
             return false;
@@ -22,6 +24,8 @@ public class Queue {
     }
     public boolean IsFull() {
         if (size == max) {
+            System.out.println("Queue Overflow");
+            System.exit(0);
             return true;
         } else {
             return false;
@@ -87,5 +91,14 @@ public class Queue {
             }
         }
         return dt;
-    } 
+    }
+    
+    public void peekRear() {
+        if (!IsEmpty()) {
+            System.out.println("Antrian paling belakang : " + data[rear].norek + " " +
+            data[rear].nama + " " + data[rear].alamat + " " + data[rear].umur + " " + data[rear].saldo + " ");
+        } else {
+            System.out.println("Queue masih kosong");
+        }
+    }
 }
