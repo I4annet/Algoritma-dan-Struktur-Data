@@ -209,12 +209,25 @@ Kode: 21, Nama: Majalah, (Kategori: Buku
 1. Lakukan perbaikan pada kode program, sehingga keluaran yang dihasilkan sama dengan verifikasi 
 hasil percobaan! Bagian mana saja yang perlu diperbaiki?
 
-<i> Jawaban : </i>
+<i> Jawaban : </i> diberikan print nama agar tampilan pada tumpukan[i] nama muncul di bagian Nama.
+
+```java
+public void tampilkanBarang() {
+        if (!cekKosong()) {
+            System.out.println("Rincian tumpukan barang di Gudang: ");
+            for (int i = 0; i <= top; i++) {
+                System.out.printf("Kode: %s, Nama: %s, (Kategori: %s\n ) ", tumpukan[i].kode, tumpukan[i].nama, tumpukan[i].kategori);
+            }
+        } else {
+            System.out.println("Tumpukan barang kosong ");
+        }
+```
+
 
 2. Berapa banyak data barang yang dapat ditampung di dalam tumpukan? Tunjukkan potongan kode 
 programnya!
 
-<i> Jawaban : </i> Tergantung banyaknya data barang yang ingin ditampung
+<i> Jawaban : </i> Tergantung banyaknya data barang yang ingin ditampung dan maksimal barang yang ditampung adalah 7
 
 ```java
 public class Gudang16 {
@@ -227,6 +240,12 @@ public class Gudang16 {
         tumpukan = new Barang16[size];
         top = -1;
     }
+```
+```java
+public class Utama16 {
+    public static void main(String[] args) {
+        Gudang16 gudang = new Gudang16(7);
+        Scanner sc = new Scanner(System.in);
 ```
 
 3. Mengapa perlu pengecekan kondisi !cekKosong() pada method tampilkanBarang? Kalau kondisi 
