@@ -5,8 +5,6 @@
 ### Absen : 16
 
 ## Percobaan 1: Penyimpanan Tumpukan Barang dalam Gudang
-
-
 ```java
 /**
  * Barang16
@@ -207,16 +205,61 @@ Kode: 21, Nama: Majalah, (Kategori: Buku
  )
  ```
 
-
-
-
 ## Pertanyaan 1
 1. Lakukan perbaikan pada kode program, sehingga keluaran yang dihasilkan sama dengan verifikasi 
-hasil percobaan! Bagian mana saja yang perlu diperbaiki? 
+hasil percobaan! Bagian mana saja yang perlu diperbaiki?
+<i> Jawaban : </i>
+
 2. Berapa banyak data barang yang dapat ditampung di dalam tumpukan? Tunjukkan potongan kode 
-programnya! 
+programnya!
+<i> Jawaban : </i>
+
 3. Mengapa perlu pengecekan kondisi !cekKosong() pada method tampilkanBarang? Kalau kondisi 
-tersebut dihapus, apa dampaknya? 
+tersebut dihapus, apa dampaknya?
+<i> Jawaban : </i>
+Jika cekKosong() pada method tampilkanBarang dihapus maka akan terjadi eror dibagian method yang lain terutama pada saat
+mencari kode atau nama barang yang ingin dicari.
+
+```java
+Menu: 
+1. Tambah barang 
+2. Ambil barang 
+3. Tampilkan tumpukan barang 
+4. Cari Barang
+5. Lihat Barang Teratas
+Pilih operasi:  1
+Masukkan kode barang: 12
+Masukkan nama barang: Jaket
+Masukkan nama kategori: Pakaian
+Barang Jaket berhasil ditambahkan ke Gudang
+
+Menu:
+1. Tambah barang
+2. Ambil barang
+3. Tampilkan tumpukan barang
+4. Cari Barang
+5. Lihat Barang Teratas
+Pilih operasi:  1
+Masukkan kode barang: 19
+Masukkan nama barang: Pensil
+Masukkan nama kategori: alat tulis
+Barang Pensil berhasil ditambahkan ke Gudang
+
+Menu:
+1. Tambah barang
+2. Ambil barang
+3. Tampilkan tumpukan barang
+4. Cari Barang
+5. Lihat Barang Teratas
+Pilih operasi:  4
+Masukkan kode atau nama barang yang ingin dicari: Pensil
+4
+Exception in thread "main" java.lang.Error: Unresolved compilation problem:
+        The method cekKosong() is undefined for the type Gudang16
+        at Gudang16.cariBarang(Gudang16.java:98)
+        at Utama16.main(Utama16.java:44)
+```
+
 4. Modifikasi kode program pada class Utama sehingga pengguna juga dapat memilih operasi lihat 
 barang teratas, serta dapat secara bebas menentukan kapasitas gudang!
 ```java
@@ -488,12 +531,17 @@ Postfix: abcd+e-*f/+
 
 ## Pertanyaan 3
 1. Pada method derajat, mengapa return value beberapa case bernilai sama? Apabila return 
-value diubah dengan nilai berbeda-beda setiap case-nya, apa yang terjadi? 
-2. Jelaskan alur kerja method konversi! 
+value diubah dengan nilai berbeda-beda setiap case-nya, apa yang terjadi?
+<i> Jawaban : </i>
+
+2. Jelaskan alur kerja method konversi!
+<i> Jawaban : </i>
+
 3. Pada method konversi, apa fungsi dari potongan kode berikut? 
 ```java
  c = Q.charAt(i);
 ```
+<i> Jawaban : </i>
 
 ## Latihan Praktikum
 
