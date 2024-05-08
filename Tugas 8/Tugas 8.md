@@ -208,14 +208,30 @@ Kode: 21, Nama: Majalah, (Kategori: Buku
 ## Pertanyaan 1
 1. Lakukan perbaikan pada kode program, sehingga keluaran yang dihasilkan sama dengan verifikasi 
 hasil percobaan! Bagian mana saja yang perlu diperbaiki?
+
 <i> Jawaban : </i>
 
 2. Berapa banyak data barang yang dapat ditampung di dalam tumpukan? Tunjukkan potongan kode 
 programnya!
-<i> Jawaban : </i>
+
+<i> Jawaban : </i> Tergantung banyaknya data barang yang ingin ditampung
+
+```java
+public class Gudang16 {
+    Barang16[] tumpukan;
+    int size;
+    int top;
+
+    public Gudang16(int kapasitas) {
+        size = kapasitas;
+        tumpukan = new Barang16[size];
+        top = -1;
+    }
+```
 
 3. Mengapa perlu pengecekan kondisi !cekKosong() pada method tampilkanBarang? Kalau kondisi 
 tersebut dihapus, apa dampaknya?
+
 <i> Jawaban : </i>
 Jika cekKosong() pada method tampilkanBarang dihapus maka akan terjadi eror dibagian method yang lain terutama pada saat
 mencari kode atau nama barang yang ingin dicari.
@@ -425,8 +441,12 @@ Kode unik dalam biner: 1101
 
 ## Pertanyaan 2
 1. Pada method konversiDesimalKeBiner, ubah kondisi perulangan menjadi while (kode != 0), 
-bagaimana hasilnya? Jelaskan alasannya! 
-2. Jelaskan alur kerja dari method konversiDesimalKeBiner! 
+bagaimana hasilnya? Jelaskan alasannya!
+<i> Jawaban : </i>
+
+2. Jelaskan alur kerja dari method konversiDesimalKeBiner!
+<i> Jawaban : </i>
+
 
 ## Percobaan 3
 ```java
