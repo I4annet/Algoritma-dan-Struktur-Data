@@ -53,7 +53,7 @@ public class Queue {
             size = 0;
             System.out.println("Queue berhasil dikosongkan");
         } else {
-            System.out.println("Queue masih kosong");
+            System.out.println("Queue masih kosong.");
         }
     }
     public void Enqueue(int dt) {
