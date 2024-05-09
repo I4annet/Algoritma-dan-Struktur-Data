@@ -102,8 +102,38 @@ tersebut pada class BukuMain seperti gambar berikut :
 1. Pada percobaan 6.2.1 (sequential search) tambahkan method FindBinarySearch bertipe 
 integer pada class PencarianBukuNoAbsen. Kemudian Deklarasikan isi method 
 FindBinarySearch dengan algoritma pencarian data menggunakan teknik binary searching.
+```java 
+ public int FindBinarySearch(int cari, int left, int right) {
+        if (right >= left) {
+            int mid = (right) / 2;
+
+            if (listBk[mid].kodeBuku == cari) {
+                return mid;
+            } 
+
+            else if (listBk[mid].kodeBuku > cari) {
+                return FindBinarySearch(cari, left, mid - 1);
+            } else {
+                return FindBinarySearch(cari, mid + 1, right);
+            }   
+
+            }
+            return -1;
+        }
+    }
+```
 2. Panggil method FindBinarySearch di kelas BukuMainNoAbsen. Kemudia panggil 
 method tampilposisi dan tampilData.
+
+```java
+System.out.println("=============================");
+    System.out.println("Menggunakan binary Search");
+    posisi = data.FindBinarySearch(cari, 0,jumBuku - 1);
+    data.Tampilposisi(cari, posisi);
+    data.TampilData(cari, posisi);
+        }
+    }
+```
 3. Jalankan dan amati hasilnya. 
 
 ## B1. Verifikasi Hasil Percobaan
