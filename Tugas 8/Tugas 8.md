@@ -591,3 +591,26 @@ pada class Gudang:
  
 • Method cariBarang digunakan untuk mencari ada atau tidaknya barang berdasarkan kode 
 barangnya atau nama barangnya
+
+```java
+public Barang16 lihatBarangTerbawah() {
+        if (!cekKosong()) {
+            return tumpukan[0];
+        } else {
+            System.out.println("Tumpukan barang kosong");
+            return null;
+        }
+    }
+
+public boolean cariBarang(String Nama, int kode) {
+        if (!cekKosong()) {
+            for(Barang16 barang : tumpukan) {
+                if (barang.kode == kode || barang.nama.equals(Nama)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
+```
