@@ -90,6 +90,9 @@ void addLast(int input) {
     }
     return tmp.nim;
  }
-
+ int indexOf(int key) {
+    Node tmp = head;
+    
+ }
 }
 
