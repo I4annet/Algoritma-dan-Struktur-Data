@@ -82,6 +82,14 @@ void addLast(int input) {
         }
     }
  }
+ 
+ int getData(int index) {
+    Node tmp = head;
+    for (int i = 0; i < index; i++) {
+        tmp = tmp.next;
+    }
+    return tmp.nim;
+ }
 
 }
 
