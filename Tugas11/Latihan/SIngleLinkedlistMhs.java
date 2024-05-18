@@ -92,7 +92,17 @@ void addLast(int input) {
  }
  int indexOf(int key) {
     Node tmp = head;
-    
+    int index = 0;
+    while (tmp != null && tmp.nim != key) {
+        tmp = tmp.next;
+        index++;
+    }
+    if (tmp != null) {
+        return index;
+    } else {
+        return -1;
+    }
+
  }
 }
 
