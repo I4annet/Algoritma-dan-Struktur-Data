@@ -13,23 +13,23 @@ public class Team {
     }
 
     public String getName() {
-        return name;
+        return name;        // Mengembalikan Nama Tim
     }
 
     public int getPoints() {
-        return points;
+        return points;      // Untuk mengembalikan nilai poin setiap tim
     }
 
     public int getWins() {
-        return wins;
+        return wins;    // untuk mengembalikan nilai kemenangan / wins setiap tim (riwayat menang)
     }
 
     public int getDraws() {
-        return draws;
+        return draws;   // (riwayat seri)
     }
 
     public int getLooses() {
-        return losses;
+        return losses;  // (riwayat kalah)
     }
 
     public void addWin() {

@@ -22,23 +22,23 @@ public class Team {
     }
 
     public String getName() {
-        return name;
+        return name;        // Mengembalikan Nama Tim
     }
 
     public int getPoints() {
-        return points;
+        return points;      // Untuk mengembalikan nilai poin setiap tim
     }
 
     public int getWins() {
-        return wins;
+        return wins;    // untuk mengembalikan nilai kemenangan / wins setiap tim (riwayat menang)
     }
 
     public int getDraws() {
-        return draws;
+        return draws;   // (riwayat seri)
     }
 
     public int getLooses() {
-        return losses;
+        return losses;  // (riwayat kalah)
     }
 
     public void addWin() {
@@ -56,6 +56,7 @@ public class Team {
         this.losses += 1; // jumlah kalah bertambah
     }
 }
+
 ```
 
 ## Class : Node
@@ -89,7 +90,7 @@ public class DoubleLinkedList {
         tail = null;
     }
 
-    public void addTeam(Team team) {
+    public void addTeam(Team team) { // Menambahkan Tim
         Node newNode = new Node(team);
         if (head == null) {
             head = newNode;
@@ -140,19 +141,19 @@ public class DoubleLinkedList {
         }
     }
 
-    public void updateTeamPoints(String name, String result) {
+    public void updateTeamPoints(String name, String result) { // Untuk mengupdate nilai / poin setiap tim
         Node current = head;
         while (current != null) {
             if (current.team.getName().equals(name)) {
                 switch (result.toLowerCase()) {
                     case "win":
-                        current.team.addWin();
+                        current.team.addWin();  // Jika timnya win, maka poin bertambah 3
                         break;
                     case "draw":
-                        current.team.addDraw();
+                        current.team.addDraw(); // Jika timnya seri, maka poin bertambah 1
                         break;
                     case "loss":
-                        current.team.addLoss();
+                        current.team.addLoss(); // Jika timnya kalah, tidak mendapatkan poin
                         break;
                 }
                 // Hapus dan tambah kembali untuk mengatur ulang posisi
@@ -164,14 +165,16 @@ public class DoubleLinkedList {
         }
     }
 
-    public void printStandings() {
+    public void printStandings() { // Menampilkan posisi klasemen semua tim
         Node current = head;
-        int rank = 1;
+        int rank = 1; // urutan peringkat akan dimulai dari 1 sampai jumlah tim yang ikut pertandingan 
+        System.out.println("---------------------------------------------------------------------------------");
+        System.out.println("|                       PROLIGA VOLI INDONESIA                                  |");
         System.out.println("---------------------------------------------------------------------------------");
         System.out.println("| Posisi | Nama Tim                            | Menang | Seri | Kalah | Poin |");
         System.out.println("---------------------------------------------------------------------------------");
         while (current != null) {
-            System.out.printf("| %-6d | %-35s | %-5d | %-6d | %-4d | %-5d | %n",
+            System.out.printf("| %-6d | %-35s | %-5d | %-6d | %-4d | %-5d | %n",    
             rank, current.team.getName(), current.team.getWins(), current.team.getDraws(), current.team.getLooses(),
             current.team.getPoints());
             current = current.next;
@@ -180,6 +183,7 @@ public class DoubleLinkedList {
         System.out.println("---------------------------------------------------------------------------------");
     }
 }
+
 ```
 
 ## Class : Main
