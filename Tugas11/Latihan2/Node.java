@@ -1,12 +1,12 @@
-package Tugas11.Latihan;
+package Tugas11.Latihan2;
 
 public class Node {
-    int nim;
+    int NIM;
     String nama;
     Node next;
 
-    Node(int nim, String nama) {
-        this.nim = nim;
+    public Node(int NIM, String nama) {
+        this.NIM = NIM;
         this.nama = nama;
         this.next = null;
     }
