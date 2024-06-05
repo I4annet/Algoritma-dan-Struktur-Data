@@ -53,6 +53,9 @@ kembali.
 
 ## Pertanyaan 1
 1. Terdapat di method apakah proses bubble sort? 
+<i> Jawaban : </i>
+
+    ![image](./Laporan/method%20bubblesort.png)
 
 2. Di dalam method bubbleSort(), terdapat baris program seperti di bawah ini: 
 
@@ -63,11 +66,11 @@ Untuk apakah proses tersebut?
 <i> jawaban : </i> untuk memastikan bahwa nilai terbesar bergerak ke posisi yang paling kanan setiap iterasi 
 
 3. Perhatikan perulangan di dalam bubbleSort() di bawah ini:
+```java
 
          for(int i=0; i < listMhs.length-1; i++)
           for(int j=1; j < listMhs.length-i; j++)
-
-
+```
 
 a. Apakah perbedaan antara kegunaan perulangan i dan perulangan j?  
 
@@ -105,7 +108,8 @@ tampil urut menaik berdasar ipk?
 ![image](./Laporan/hasil%20percobaa%20selectionsort.png) 
 
 ## Pertanyaan 2
-1. Di dalam method selection sort, terdapat baris program seperti di bawah ini :    
+1. Di dalam method selection sort, terdapat baris program seperti di bawah ini :   
+```java 
             int idxMin = i;
 
             for (int j = i + 1; j < listMhs.length; j++){ 
@@ -113,7 +117,7 @@ tampil urut menaik berdasar ipk?
                 if (listMhs[j].ipk < listMhs[idxMin].ipk){
 
                     idxMin = j;
-
+```
 Untuk apakah proses tersebut, jelaskan!
 
 <i> jawaban : </i> proses ini membantu dalam mengatur elemen-elemen array secara terurut, baik itu dalam urutan naik (ascending) maupun turun (descending) tergantung pada implementasi tertentu 
