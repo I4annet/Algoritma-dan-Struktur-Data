@@ -163,6 +163,12 @@ public class DoubleLinkedLists {
             }
             return tmp.data;
         }
+        public int getFirst() throws Exception {
+            if (isEmpty()) {
+                throw new Exception("Linked List kosong");
+            }
+            return head.data;
+        }
 }
 
 
