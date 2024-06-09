@@ -245,6 +245,21 @@ Gedung E terhubung dengan
 F (80 m),
 ```
  ### B. Menggunakan Undirected weighted graph 
+```java
+Degree dari Gedung A: 2
+Gedung A terhubung dengan
+C (100 m), B (50 m),
+Gedung B terhubung dengan
+D (70 m),
+Gedung C terhubung dengan
+D (40 m),
+Gedung D terhubung dengan
+E (60 m),
+Gedung E terhubung dengan
+F (80 m),
+
+PS D:\GitHub\Algoritma-dan-Struktur-Data> 
+```
 
 ## Pertanyaan 1 
 1. Perbaiki kode program Anda apabila terdapat error atau hasil kompilasi kode tidak sesuai! 
@@ -255,16 +270,200 @@ variabel tersebut!
 jenis lain saat digunakan pada method addEdge pada class Graph? 
 5. Modifikasi kode program sehingga dapat dilakukan pengecekan apakah terdapat jalur antara 
 suatu node dengan node lainnya, seperti contoh berikut (Anda dapat memanfaatkan Scanner). 
+```java
+public boolean isConnected(int asal, int tujuan) throws Exception {
+            for (int i = 0; i < list[asal].size(); i++) {
+                if (list[asal].get(i) == tujuan) {
+                    return true;
+                }
+            }
+            return false;
+        }
+```
+```java 
+System.out.print("Masukkan gedung asal : ");
+        int asal = sc.nextInt();
+        System.out.print("Masukkan gedung tujuan : ");
+        int tujuan = sc.nextInt();
 
-
+        if (gedung.isConnected(asal, tujuan)) {
+            System.out.println("Gedung " + (char)('A' + asal) + " dan " +  (char)('A' + tujuan) + " bertetangga");
+        } else {
+            System.out.println("Gedung " + (char)('A' + asal) + " dan" +  (char)('A' + tujuan) + "tidak bertetangga");
+        }
+```
+```java
+Masukkan gedung asal : 2
+Masukkan gedung tujuan : 3
+Gedung C dan D bertetangga
+PS D:\GitHub\Algoritma-dan-Struktur-Data>
+Masukkan gedung asal : 2
+Masukkan gedung tujuan : 5
+Gedung C dan F tidak bertetangga
+```
 ## Percobaan 2 : Implementasi Graph menggunakan Matriks
+### Membuat Class baru untuk Matriks (GraphMatriks)
+```java
+package Tugas15;
 
+public class GraphMatriks16 {
+    int vertex;
+    int[][] matriks;
+
+    public GraphMatriks16(int v) {
+        vertex = v;
+        matriks = new int[v][v];
+        for (int i = 0; i < v; i++) {
+            for (int j = 0; j < v; j++) {
+                matriks[i][j] = 0;
+            }
+        }
+    }
+
+    public void makeEdge(int asal, int tujuan, int jarak) {
+        matriks[asal][tujuan] = jarak;
+    }
+
+    public void removeEdge(int asal, int tujuan) {
+        matriks[asal][tujuan] = 0;
+    }
+
+    public void printGraph() {
+        for (int i = 0; i < vertex; i++) {
+            System.out.print("Gedung " + (char) ('A' + i) + ": ");
+            for (int j = 0; j < vertex; j++) {
+                System.out.print("Gedung " + (char) ('A' + j) + " (" + matriks[i][j] + " m),");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+### Penambahan Kode untuk memanggil Class GraphMatriks di Class GraphMain
+```java
+GraphMatriks16 gdg = new GraphMatriks16(4);
+    gdg.makeEdge(0, 1, 50);
+    gdg.makeEdge(1, 0, 60);
+    gdg.makeEdge(1, 2, 70);              
+    gdg.makeEdge(2, 1, 80);
+    gdg.makeEdge(2, 3, 40);
+    gdg.makeEdge(3, 0, 90);
+    gdg.printGraph();
+    System.out.println("Hasil setelah penghapusan edge");
+    gdg.removeEdge(2, 1);
+    gdg.printGraph();
+```
 
 ## Verifikasi Hasil Percobaan
-
+```java
+Gedung A: Gedung A (0 m),Gedung B (50 m),Gedung C (0 m),Gedung D (0 m),
+Gedung B: Gedung A (60 m),Gedung B (0 m),Gedung C (70 m),Gedung D (0 m),
+Gedung C: Gedung A (0 m),Gedung B (80 m),Gedung C (0 m),Gedung D (40 m),
+Gedung D: Gedung A (90 m),Gedung B (0 m),Gedung C (0 m),Gedung D (0 m),
+Hasil setelah penghapusan edge
+Gedung A: Gedung A (0 m),Gedung B (50 m),Gedung C (0 m),Gedung D (0 m),
+Gedung B: Gedung A (60 m),Gedung B (0 m),Gedung C (70 m),Gedung D (0 m),
+Gedung C: Gedung A (0 m),Gedung B (0 m),Gedung C (0 m),Gedung D (40 m),
+Gedung D: Gedung A (90 m),Gedung B (0 m),Gedung C (0 m),Gedung D (0 m),
+PS D:\GitHub\Algoritma-dan-Struktur-Data>
+```
 ## Pertanyaan 2
 1. Perbaiki kode program Anda apabila terdapat error atau hasil kompilasi kode tidak sesuai! 
 2. Apa jenis graph yang digunakan pada Percobaan 2? 
 3. Apa maksud dari dua baris kode berikut? 
 4. Modifikasi kode program sehingga terdapat method untuk menghitung degree, termasuk 
 inDegree dan outDegree!
+### Menambahkan method OutDegree(int node16), inDegree(int node16), printDegrees() di Class GraphMatriks
+```java
+public int outDegree(int node) {
+        int outDegree = 0;
+        for (int i = 0; i < vertex; i++) {
+            if (matriks[node][i] != 0) {
+                outDegree++;
+            }
+        }
+        return outDegree;
+    }
+
+    public int inDegree(int node) {
+        int inDegree = 0;
+        for (int i = 0; i < vertex; i++) {
+            if (matriks[i][node] != 0) {
+                inDegree++;
+            }
+        }
+        return inDegree;
+    }
+
+    public void printDegrees() {
+        for (int i = 0; i < vertex; i++) {
+            int inDeg = inDegree(i);
+            int outDeg = outDegree(i);
+            System.out.println("Gedung " + (char) ('A' + i) + " - In-degree: " + inDeg + ", Out-degree: " + outDeg);
+        }
+    }
+```
+### Menambahkan kode untuk memanggil method OutDegree(int node16), inDegree(int node16), printDegrees() di Class GraphMain
+```java 
+  /*  Untuk Graph Matriks */
+    GraphMatriks16 gdg = new GraphMatriks16(4);
+    gdg.makeEdge(0, 1, 50);
+    gdg.makeEdge(1, 0, 60);
+    gdg.makeEdge(1, 2, 70);              
+    gdg.makeEdge(2, 1, 80);
+    gdg.makeEdge(2, 3, 40);
+    gdg.makeEdge(3, 0, 90);
+
+    System.out.println("Graf sebelum penghapusan edge : ");
+    gdg.printGraph();
+
+    System.out.println("\nDegree dari setiap node: ");
+    gdg.printDegrees();
+
+    System.out.println("Hasil setelah penghapusan edge");
+    gdg.removeEdge(2, 1);
+    gdg.printGraph();
+    
+    System.out.println("\nDegree dari setiap node: ");
+    gdg.printDegrees();
+    }
+```
+### Output 
+```java
+Graf sebelum penghapusan edge :
+Gedung A: Gedung A (0 m),Gedung B (50 m),Gedung C (0 m),Gedung D (0 m),
+Gedung B: Gedung A (60 m),Gedung B (0 m),Gedung C (70 m),Gedung D (0 m),
+Gedung C: Gedung A (0 m),Gedung B (80 m),Gedung C (0 m),Gedung D (40 m),
+Gedung D: Gedung A (90 m),Gedung B (0 m),Gedung C (0 m),Gedung D (0 m),
+
+Degree dari setiap node:
+Gedung A - In-degree: 2, Out-degree: 1
+Gedung B - In-degree: 2, Out-degree: 2
+Gedung C - In-degree: 1, Out-degree: 2
+Gedung D - In-degree: 1, Out-degree: 1
+Hasil setelah penghapusan edge
+Gedung A: Gedung A (0 m),Gedung B (50 m),Gedung C (0 m),Gedung D (0 m),
+Gedung B: Gedung A (60 m),Gedung B (0 m),Gedung C (70 m),Gedung D (0 m),
+Gedung C: Gedung A (0 m),Gedung B (0 m),Gedung C (0 m),Gedung D (40 m),
+Gedung D: Gedung A (90 m),Gedung B (0 m),Gedung C (0 m),Gedung D (0 m),
+
+Degree dari setiap node:
+Gedung A - In-degree: 2, Out-degree: 1
+Gedung B - In-degree: 1, Out-degree: 2
+Gedung C - In-degree: 1, Out-degree: 1
+Gedung D - In-degree: 1, Out-degree: 1
+PS D:\GitHub\Algoritma-dan-Struktur-Data>
+```
+
+## Latihan Praktikum
+1. Modifikasi kode program pada class GraphMain sehingga terdapat menu program yang bersifat 
+dinamis, setidaknya terdiri dari: 
+a) Add Edge 
+b) Remove Edge 
+c) Degree 
+d) Print Graph 
+e) Cek Edge 
+Pengguna dapat memilih menu program melalui input Scanner 
+2. Tambahkan method updateJarak pada Percobaan 1 yang digunakan untuk mengubah jarak 
+antara dua node asal dan tujuan! 
+3. Tambahkan method hitungEdge untuk menghitung banyaknya edge yang terdapat di dalam graf!

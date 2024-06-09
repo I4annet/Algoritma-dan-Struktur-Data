@@ -14,7 +14,7 @@ public class Graph16 {
 
         public void addEdge(int asal, int tujuan, int jarak) {
             list[asal].addFirst(tujuan, jarak);
-            list[tujuan].addFirst(asal, jarak);    /* Untuk Undirected Graph */
+            // list[tujuan].addFirst(asal, jarak);    /* Untuk Undirected Graph */
         }
 
         public void degree(int asal) throws Exception {
@@ -66,5 +66,14 @@ public class Graph16 {
                 System.out.println("");
             }
             System.out.println("");
+        }
+
+        public boolean isConnected(int asal, int tujuan) throws Exception {
+            for (int i = 0; i < list[asal].size(); i++) {
+                if (list[asal].get(i) == tujuan) {
+                    return true;
+                }
+            }
+            return false;
         }
 }
