@@ -387,6 +387,241 @@ Data indeks ke-1 pada Linked Lists adalah: 40
 1. Buat program antrian vaksinasi menggunakan queue berbasis double linked list sesuai ilustrasi 
 dan menu di bawah ini! (counter jumlah antrian tersisa di menu cetak(3) dan data orang yang 
 telah divaksinasi di menu Hapus Data(2) harus ada) 
+### Membuat Class Node
+```java
+package Tugas13.Praktikum1;
+
+public class Node {
+    int nomor;
+    String nama;
+    Node next;
+    Node prev;
+
+    public Node(String nama, int nomor) {
+        this.nama = nama;
+        this.next = null;
+        this.prev = null;
+        this.nomor = nomor;
+        
+    }
+}   
+```
+### Membuat Class DoubleLinkedLists
+```java
+package Tugas13.Praktikum1;
+
+public class DoubleLinkedList {
+    Node head;
+    Node tail;
+    int size;
+
+    public DoubleLinkedList() {
+        this.head = null;
+        this.tail = null;
+        this.size = 0;
+    }
+
+    public void add(String nama, int nomor) {
+        Node newNode = new Node(nama, nomor);
+        if (head == null) {
+            head = tail = newNode;
+        } else {
+            tail.next = newNode;
+            newNode.prev = tail;
+            tail = newNode;
+        }
+        size++;
+    }
+
+    public void remove() {
+      if (head == null) {
+        System.out.println("Antrian kosong.");
+        return;
+      }
+      Node temp = head;
+      head = head.next;
+      if (head != null) {
+        head.prev = null;
+      } else {
+        tail = null;
+      }
+      size--;
+      System.out.println(temp.nama +  " telah selesai divaksinasi");
+    }
+
+    public void print() {
+        Node current = head;
+        System.out.println("+++++++++++++++++++++++++");
+        System.out.println("Daftar Pengantri Vaksin: ");
+        System.out.println("+++++++++++++++++++++++++");
+        System.out.println("| No.     | Nama  |");
+        while (current != null) {
+            System.out.printf(" | %-6d | %-5s |\n", current.nomor,  current.nama );
+            current = current.next;
+        }
+        System.out.println("Sisa antrian: " + size);
+    }
+}
+```
+### Membuat Class VaksinasiQueue dalam bentuk Main
+```java
+package Tugas13.Praktikum1;
+
+import java.util.Scanner;
+
+public class VaksinasiQueue {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        DoubleLinkedList queue = new DoubleLinkedList();
+        int pilih;
+
+        do {
+            System.out.println("+++++++++++++++++++++++++++++++++++");
+            System.out.println("  PENGANTRI VAKSIN EXTRAVAGANZA    ");
+            System.out.println("+++++++++++++++++++++++++++++++++++");
+            System.out.println("1. Tambah Data Penerima Vaksin");
+            System.out.println("2. Hapus Data Pengantri Vaksin");
+            System.out.println("3. Cetak Daftar Penerima Vaksin");
+            System.out.println("4. Keluar");
+            System.out.println("+++++++++++++++++++++++++++++++++++");
+            pilih = sc.nextInt();
+            sc.nextLine();
+
+            switch (pilih) {
+                case 1:
+                    System.out.println("----------------------------------");
+                    System.out.println("Masukkan Data Penerima Vaksin: ");
+                    System.out.println("----------------------------------");
+                    System.out.println("Nomor Antrian:");
+                    int antrian = sc.nextInt();
+                    sc.nextLine();
+                    System.out.println("-Nama Penerima: ");
+                    String nama = sc.nextLine();
+                    queue.add(nama, antrian);
+                    break;
+                case 2:
+                    queue.remove();
+                    queue.print();
+                    break;
+                case 3:
+                    queue.print();
+                    break;
+                case 4:
+                    System.out.println("Keluar dari program.");
+                    break;
+                default:
+                System.out.println("Pilihan tidak valid. Silahkan coba lagi.");
+                    break;
+            }
+        } while (pilih != 4);
+
+        sc.close();
+    }
+}
+```
+### Output
+```java
++++++++++++++++++++++++++++++++++++
+  PENGANTRI VAKSIN EXTRAVAGANZA
++++++++++++++++++++++++++++++++++++
+1. Tambah Data Penerima Vaksin
+2. Hapus Data Pengantri Vaksin
+3. Cetak Daftar Penerima Vaksin
+4. Keluar
++++++++++++++++++++++++++++++++++++
+1
+----------------------------------
+Masukkan Data Penerima Vaksin:
+----------------------------------
+Nomor Antrian:
+123
+-Nama Penerima:
+Joko
++++++++++++++++++++++++++++++++++++
+  PENGANTRI VAKSIN EXTRAVAGANZA
++++++++++++++++++++++++++++++++++++
+1. Tambah Data Penerima Vaksin
+2. Hapus Data Pengantri Vaksin
+3. Cetak Daftar Penerima Vaksin
+4. Keluar
++++++++++++++++++++++++++++++++++++
+1
+----------------------------------
+Masukkan Data Penerima Vaksin:
+----------------------------------
+Nomor Antrian:
+124
+-Nama Penerima:
+Mely
++++++++++++++++++++++++++++++++++++
+  PENGANTRI VAKSIN EXTRAVAGANZA
++++++++++++++++++++++++++++++++++++
+1. Tambah Data Penerima Vaksin
+2. Hapus Data Pengantri Vaksin
+3. Cetak Daftar Penerima Vaksin
+4. Keluar
++++++++++++++++++++++++++++++++++++
+1
+----------------------------------
+Masukkan Data Penerima Vaksin:
+----------------------------------
+Nomor Antrian:
+135
+-Nama Penerima:
+Johan
++++++++++++++++++++++++++++++++++++
+  PENGANTRI VAKSIN EXTRAVAGANZA
++++++++++++++++++++++++++++++++++++
+1. Tambah Data Penerima Vaksin
+2. Hapus Data Pengantri Vaksin
+3. Cetak Daftar Penerima Vaksin
+4. Keluar
++++++++++++++++++++++++++++++++++++
+1
+----------------------------------
+Masukkan Data Penerima Vaksin:
+----------------------------------
+Nomor Antrian:
+146
+-Nama Penerima:
+Rosi
++++++++++++++++++++++++++++++++++++
+  PENGANTRI VAKSIN EXTRAVAGANZA
++++++++++++++++++++++++++++++++++++
+1. Tambah Data Penerima Vaksin
+2. Hapus Data Pengantri Vaksin
+3. Cetak Daftar Penerima Vaksin
+4. Keluar
++++++++++++++++++++++++++++++++++++
+3
++++++++++++++++++++++++++
+Daftar Pengantri Vaksin:
++++++++++++++++++++++++++
+| No.     | Nama  |
+ | 123    | Joko  |
+ | 124    | Mely  |
+ | 135    | Johan |
+ | 146    | Rosi  |
+Sisa antrian: 4
++++++++++++++++++++++++++++++++++++
+  PENGANTRI VAKSIN EXTRAVAGANZA
++++++++++++++++++++++++++++++++++++
+1. Tambah Data Penerima Vaksin
+2. Hapus Data Pengantri Vaksin
+3. Cetak Daftar Penerima Vaksin
+4. Keluar
++++++++++++++++++++++++++++++++++++
+2
+Joko telah selesai divaksinasi
++++++++++++++++++++++++++
+Daftar Pengantri Vaksin:
++++++++++++++++++++++++++
+| No.     | Nama  |
+ | 124    | Mely  |
+ | 135    | Johan |
+ | 146    | Rosi  |
+Sisa antrian: 3
+```
 
 2. Buatlah program daftar film yang terdiri dari id, judul dan rating menggunakan double linked 
 lists, bentuk program memiliki fitur pencarian melalui ID Film dan pengurutan Rating secara 
