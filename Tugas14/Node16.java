@@ -5,9 +5,9 @@ public class Node16 {
     Node16 left;
     Node16 right;
 
-    public Node16(Node16 left, int data, Node16 right) {
-        this.left = left;
-        this.right = right;
+    public Node16(int data) {
+        this.left = null;
+        this.right = null;
         this.data = data;
     }
 }
