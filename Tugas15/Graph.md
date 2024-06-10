@@ -264,10 +264,16 @@ PS D:\GitHub\Algoritma-dan-Struktur-Data>
 ## Pertanyaan 1 
 1. Perbaiki kode program Anda apabila terdapat error atau hasil kompilasi kode tidak sesuai! 
 2. Pada class Graph, terdapat atribut list[] bertipe DoubleLinkedList. Sebutkan tujuan pembuatan 
-variabel tersebut! 
+variabel tersebut!
+<i> Jawaban </i>
+
 3. Jelaskan alur kerja dari method removeEdge! 
+<i> Jawaban </i>
+
 4. Apakah alasan pemanggilan method addFirst() untuk menambahkan data, bukan method add 
-jenis lain saat digunakan pada method addEdge pada class Graph? 
+jenis lain saat digunakan pada method addEdge pada class Graph?
+<i> Jawaban </i>
+
 5. Modifikasi kode program sehingga dapat dilakukan pengecekan apakah terdapat jalur antara 
 suatu node dengan node lainnya, seperti contoh berikut (Anda dapat memanfaatkan Scanner). 
 ```java
@@ -369,8 +375,17 @@ PS D:\GitHub\Algoritma-dan-Struktur-Data>
 ```
 ## Pertanyaan 2
 1. Perbaiki kode program Anda apabila terdapat error atau hasil kompilasi kode tidak sesuai! 
-2. Apa jenis graph yang digunakan pada Percobaan 2? 
+2. Apa jenis graph yang digunakan pada Percobaan 2?
+
+<i> Jawaban </i>
+
 3. Apa maksud dari dua baris kode berikut? 
+```java
+gdg.makeEdge(1, 2, 70);              
+gdg.makeEdge(2, 1, 80);
+```
+<i> Jawaban </i>
+
 4. Modifikasi kode program sehingga terdapat method untuk menghitung degree, termasuk 
 inDegree dan outDegree!
 ### Menambahkan method OutDegree(int node16), inDegree(int node16), printDegrees() di Class GraphMatriks
@@ -467,3 +482,100 @@ Pengguna dapat memilih menu program melalui input Scanner
 2. Tambahkan method updateJarak pada Percobaan 1 yang digunakan untuk mengubah jarak 
 antara dua node asal dan tujuan! 
 3. Tambahkan method hitungEdge untuk menghitung banyaknya edge yang terdapat di dalam graf!
+
+```java
+ public int hitungEdge() {
+            int count = 0;
+            for (int i = 0; i < vertex; i++) {          
+              count += list[i].size();
+                }
+            
+            return count;
+        }
+        public void updateJarak(int asal, int tujuan, int jarak) throws Exception {
+            for (int i = 0; i < list[asal].size(); i++) {
+            if (list[asal].get(i) == tujuan) {
+                list[asal].remove(tujuan);
+                list[asal].addFirst(tujuan, jarak);
+                return;
+            }
+        }
+    }
+```
+
+```java
+    while (true) {
+            System.out.println("Menu: ");
+            System.out.println("1. Add Edge");
+            System.out.println("2. Remove Edge");
+            System.out.println("3. Degree");
+            System.out.println("4. Print Graph");
+            System.out.println("5. Cek Edge");                  /* (Tugas Latihan Praktikum) */
+            System.out.println("6. Update Jarak");
+            System.out.println("7. Hitung Edge");
+            System.out.println("8. Keluar");
+            System.out.print("Pilih menu: ");
+            int pilih = sc.nextInt();
+
+            switch (pilih) {
+            case 1:
+                System.out.print("Asal (0-3): ");
+                int asal = sc.nextInt();
+                System.out.print("Tujuan (0-3): ");
+                int tujuan = sc.nextInt();
+                System.out.print("Jarak: ");
+                int jarak = sc.nextInt();
+                gedung.addEdge(asal, tujuan, jarak);
+                break;
+
+            case 2 :
+            System.out.print("Asal (0-3): ");
+             asal = sc.nextInt();
+            System.out.print("Tujuan (0-3): ");
+             tujuan = sc.nextInt();
+            System.out.print("Jarak: ");
+             jarak = sc.nextInt();
+            gedung.removeEdge(asal, tujuan);
+            break;
+
+            case 3 :
+            System.out.print("Node (0-3): ");
+            int node = sc.nextInt();
+            gedung.degree(node);
+            break;
+
+            case 4:
+            gedung.printGraph();
+            break;
+
+            case 5:
+            System.out.print("Asal (0-3): ");
+             asal = sc.nextInt();
+            System.out.print("Tujuan (0-3): ");
+             tujuan = sc.nextInt();
+            System.out.println("Cek Edge: " + gedung.isConnected(asal, tujuan));
+            break;
+
+            case 6:
+            System.out.print("Asal (0-3): ");
+            asal = sc.nextInt();
+           System.out.print("Tujuan (0-3): ");
+            tujuan = sc.nextInt();
+            System.out.print("Jarak: ");
+            jarak = sc.nextInt();
+            gedung.updateJarak(asal, tujuan, jarak);
+            break;
+
+            case 7:
+            System.out.println("Hitung Edge: " + gedung.hitungEdge());
+            break;
+
+            case 8:
+            System.out.println("Program telah berhenti.");
+            sc.close();
+            return;
+                default:
+                System.out.println("Coba lagi.");
+            }
+        }
+```
