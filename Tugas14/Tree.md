@@ -323,3 +323,186 @@ di dalam tree.
 5. Modifikasi class BinaryTreeArray, dan tambahkan :  
 • method add(int data) untuk memasukan data ke dalam tree  
 • method traversePreOrder() dan traversePostOrder() 
+
+### Menambahkan method dari soal nomor 1, 2, 3 dan 4 ke Class BinaryTree16
+```java
+   // 1. Method untuk menambahkan node secara rekursif
+     public void addRecursive(int data) {
+        root = addRecursiveHelper(root, data);
+    }
+ 
+    private Node16 addRecursiveHelper(Node16 current, int data) {
+        if (current == null) {
+            return new Node16(data);
+        }
+
+        if (data < current.data) {
+            current.left = addRecursiveHelper(current.left, data);
+        } else if (data > current.data) {
+            current.right = addRecursiveHelper(current.right, data);
+        } else {
+            return current;
+        }
+        return current;
+    }
+
+    // 2. Method untuk menampilka nilai paling kecil dan paling besar
+    public int findMin() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Tree is empty");
+        }
+        Node16 current = root;
+        while (current.left != null) {
+            current = current.left;
+        }
+        return current.data;
+    }
+
+    public int findMax() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Tree is empty");
+        }
+        Node16 current = root;
+        while (current.right != null) {
+            current = current.right;
+        }
+        return current.data;
+    }
+
+    // 3. Method untuk menampilkan data yang ada di leaf
+    public void printLeafNode() {
+        printLeafNodeHelper(root);
+    }
+
+    private void printLeafNodeHelper(Node16 node) {
+        if (node != null) {
+            if (node.left == null && node.right == null) {
+                System.out.print(node.data + " ");
+            }
+            printLeafNodeHelper(node.left);
+            printLeafNodeHelper(node.right);
+        }
+    }
+
+    // 4. Method untk menampilkan jumlah leaf yang ada di dalam tree
+    public int countLeafNodes() {
+        return countLeafNodesHelper(root);
+    }
+
+    private int countLeafNodesHelper(Node16 node) {
+        if (node == null) {
+            return 0;
+        }
+        if (node.left == null && node.right == null) {
+            return 1;
+        } else {
+            return countLeafNodesHelper(node.left) + countLeafNodesHelper(node.right);
+        }
+    }
+```
+### Menambahkan method dari soal nomor 1, 2, 3 dan 4 ke Class BinaryTreeMain16
+```java
+  // Menambahkan node menggunakan method addRecursive
+    System.out.println("Menambahkan node 2 menggunakan rekursif");
+    bt.addRecursive(2);
+    System.out.print("InOrder Traversal after adding 2: ");
+    bt.traverseInOrder(bt.root);
+    System.out.println();
+
+    // Menampilkan nilai paling kecil dan paling besar 
+    System.out.println("Nilai paling kecil di tree: " + bt.findMin());
+    System.out.println("Nilai paling besar di tree: " + bt.findMax());
+
+    // Menampilkan leaf nodes
+    System.out.print("Leaf nodes: ");
+    bt.printLeafNode();
+    System.out.println();
+    
+    // Menampilkan jumlah leaf nodes
+    System.out.println("Jumlah leaf nodes: " + bt.countLeafNodes());
+```
+
+### Menambahkan method dari soal nomor 5 ke Class BinaryTreeArray16
+```java
+ // Method untuk menambahkan data ke dalam tree
+    void add(int data) {
+        if (idxLast == this.data.length - 1) {
+            System.out.println("Tree is full");
+            return;
+        }
+        this.data[++idxLast] = data;
+    }
+
+    // Method untuk traversePreOrder
+    void traversePreOrder(int idxStart) {
+        if (idxStart <= idxLast) {
+            System.out.print(data[idxStart] + " ");
+            traversePreOrder(2 * idxStart + 1);
+            traversePreOrder(2 * idxStart + 2);
+        }
+    }
+
+    // Method untuk traversePostOrder
+    void traversePostOrder(int idxStart) {
+        if (idxStart <= idxLast) {
+            traversePostOrder(2 * idxStart + 1);
+            traversePostOrder(2 * idxStart + 2);
+            System.out.print(data[idxStart] + " ");
+        }
+    }
+```
+
+###  Menambahkan method dari soal nomor 5 ke Class BinaryTreeArrayMain16
+```java
+ // Tambahkan data baru
+    System.out.println("Menambahkan data 2 ke dalam tree.");
+    bta.add(2);
+    System.out.println("Inorder Traversal setelah penambahan: ");
+    bta.traverseInOrder(0);
+    System.out.println("\n");
+
+    // Traverse Pre-Order
+    System.out.println("Preorder Traversal: ");
+    bta.traversePreOrder(0);
+    System.out.println("\n");
+
+    // Traverse Post-Order
+    System.out.println("PostOrder Traversal : ");
+    bta.traversePostOrder(0);
+    System.out.println("\n");
+```
+
+### Ouput BinaryTreeMain16 dan BinaryTreeArrayMain16
+```java
+// BinaryTreeMain16
+PreOrder Traversal : 6 4 3 5 8 7 9 10 15 
+InOrder Traversal : 3 4 5 6 7 8 9 10 15
+PostOrder Traversal : 3 5 4 7 15 10 9 8 6
+Find Node : true
+Delete Node 8
+
+PreOrder Traversal : 6 4 3 5 9 7 10 15
+Menambahkan node 2 menggunakan rekursif
+InOrder Traversal after adding 2: 2 3 4 5 6 7 9 10 15
+Nilai paling kecil di tree: 2
+Nilai paling besar di tree: 15
+Leaf nodes: 2 5 7 15
+Jumlah leaf nodes: 4
+PS D:\GitHub\Algoritma-dan-Struktur-Data>
+
+// BinaryTreeArrayMain16
+Inorder Traversal : 
+3 4 5 6 7 8 9 
+
+Menambahkan data 2 ke dalam tree.
+Inorder Traversal setelah penambahan:
+2 3 4 5 6 7 8 9
+
+Preorder Traversal:
+6 4 3 2 5 8 7 9
+
+PostOrder Traversal :
+2 3 5 4 7 9 8 6
+
+PS D:\GitHub\Algoritma-dan-Struktur-Data>
+```

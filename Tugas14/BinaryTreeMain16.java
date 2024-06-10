@@ -33,5 +33,24 @@ public class BinaryTreeMain16 {
     System.out.print("PreOrder Traversal : ");
     bt.traversePreOrder(bt.root);
     System.out.println();
+
+    // Menambahkan node menggunakan method addRecursive
+    System.out.println("Menambahkan node 2 menggunakan rekursif");
+    bt.addRecursive(2);
+    System.out.print("InOrder Traversal after adding 2: ");
+    bt.traverseInOrder(bt.root);
+    System.out.println();
+
+    // Menampilkan nilai paling kecil dan paling besar 
+    System.out.println("Nilai paling kecil di tree: " + bt.findMin());
+    System.out.println("Nilai paling besar di tree: " + bt.findMax());
+
+    // Menampilkan leaf nodes
+    System.out.print("Leaf nodes: ");
+    bt.printLeafNode();
+    System.out.println();
+    
+    // Menampilkan jumlah leaf nodes
+    System.out.println("Jumlah leaf nodes: " + bt.countLeafNodes());
     }
 }

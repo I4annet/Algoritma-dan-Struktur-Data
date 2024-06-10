@@ -38,7 +38,7 @@ public class BinaryTree16 {
                 }
             }
         }
-
+    
     public boolean find(int data) {
         Node16 current = root;
         while (current != null) {
@@ -155,5 +155,82 @@ public class BinaryTree16 {
             successor.left = current.left;
         }
     }
+
+     // 1. Method untuk menambahkan node secara rekursif
+     public void addRecursive(int data) {
+        root = addRecursiveHelper(root, data);
+    }
+ 
+    private Node16 addRecursiveHelper(Node16 current, int data) {
+        if (current == null) {
+            return new Node16(data);
         }
+
+        if (data < current.data) {
+            current.left = addRecursiveHelper(current.left, data);
+        } else if (data > current.data) {
+            current.right = addRecursiveHelper(current.right, data);
+        } else {
+            return current;
+        }
+        return current;
+    }
+
+    // 2. Method untuk menampilka nilai paling kecil dan paling besar
+    public int findMin() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Tree is empty");
+        }
+        Node16 current = root;
+        while (current.left != null) {
+            current = current.left;
+        }
+        return current.data;
+    }
+
+    public int findMax() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Tree is empty");
+        }
+        Node16 current = root;
+        while (current.right != null) {
+            current = current.right;
+        }
+        return current.data;
+    }
+
+    // 3. Method untuk menampilkan data yang ada di leaf
+    public void printLeafNode() {
+        printLeafNodeHelper(root);
+    }
+
+    private void printLeafNodeHelper(Node16 node) {
+        if (node != null) {
+            if (node.left == null && node.right == null) {
+                System.out.print(node.data + " ");
+            }
+            printLeafNodeHelper(node.left);
+            printLeafNodeHelper(node.right);
+        }
+    }
+
+    // 4. Method untk menampilkan jumlah leaf yang ada di dalam tree
+    public int countLeafNodes() {
+        return countLeafNodesHelper(root);
+    }
+
+    private int countLeafNodesHelper(Node16 node) {
+        if (node == null) {
+            return 0;
+        }
+        if (node.left == null && node.right == null) {
+            return 1;
+        } else {
+            return countLeafNodesHelper(node.left) + countLeafNodesHelper(node.right);
+        }
+    }
+
+    
+
+}
         
