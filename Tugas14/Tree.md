@@ -236,10 +236,25 @@ PS D:\GitHub\Algoritma-dan-Struktur-Data>
 ## Pertanyaan 1
 1. Mengapa dalam binary search tree proses pencarian data bisa lebih efektif dilakukan dibanding 
 binary tree biasa? 
+
+<i> Jawaban </i> karena binary search tree memiliki sifat terurut dan setiap node pada bst memiliki nilai yang lebih besar dari semua nilai di subtree kiri dan lebih kecil dari semua nilai di subtree kanan. Dengan ini dapat mencari di subtree kiri atau kanan pada setiap tahap. 
+
 2. Untuk apakah di class Node, kegunaan dari atribut left dan right? 
-3. a. Untuk apakah kegunaan dari atribut root di dalam class BinaryTree? 
+
+<i> Jawaban </i> left digunakan untuk merujuk ke anak kiri dari sebuah node begitupun 'right' digunakan untuk merujuk ke anak kanan dari sebuah node
+
+3. a. Untuk apakah kegunaan dari atribut root di dalam class BinaryTree?
+
+<i> Jawaban </i>   Untuk merujuk ke node pertama atau akar dari binary tree yang merupakan titik awal dari semua operasi tree.
+
 b. Ketika objek tree pertama kali dibuat, apakah nilai dari root? 
+
+<i> Jawaban </i> null untuk menunjukkan bahwa tree masih dalam keadaan kosong dan belum ada yang di masukkan.
+
 4. Ketika tree masih kosong, dan akan ditambahkan sebuah node baru, proses apa yang akan terjadi? 
+
+<i> Jawaban : </i> Node baru yang ditambahkan pada tree yang masih kosong akan menjadi 'root' dan tidak memiliki anak (atribut left dan right bernilai null)
+
 5. Perhatikan method add(), di dalamnya terdapat baris program seperti di bawah ini. Jelaskan 
 secara detil untuk apa baris program tersebut? 
 ```java
@@ -252,6 +267,9 @@ break;
 } 
 }
 ```
+<i> Jawaban </i>
+
+
 
 ## Percobaan 2 : Implementasi binary tree dengan array
 
@@ -301,16 +319,27 @@ public class BinaryTreeArrayMain16 {
 ```java
 Inorder Traversal : 
 3 4 5 6 7 8 9 
-
 PS D:\GitHub\Algoritma-dan-Struktur-Data> 
 ```
 ## Pertanyaan 2
-1. Apakah kegunaan dari atribut data dan idxLast yang ada di class BinaryTreeArray? 
+1. Apakah kegunaan dari atribut data dan idxLast yang ada di class BinaryTreeArray?
+
+<i> Jawaban </i> atribut data digunakan untuk menyimpan elemen - elemen dari tree dalam bentuk array, sedangkan  idxLast digunakn untuk menyimpan indeks dari elemen terakhir yang diisi dalam array.
+
 2. Apakah kegunaan dari method populateData()? 
+
+<i> Jawaban </i> digunakan untuk mengisi array data dengan nilai-nilai tertentu.
+
 3. Apakah kegunaan dari method traverseInOrder()? 
+<i> Jawaban </i>  untuk melakukan penelusuran InOrder pada binary tree termasuk ke subtree kiri, node sekarang, dan subtree kana
+lalu akan mencetak nilai-nilai node dalam urutan yang terurut (ascending) jika tree adalah binary search tree.
+
 4. Jika suatu node binary tree disimpan dalam array indeks 2, maka di indeks berapakah posisi 
 left child dan rigth child masin-masing? 
+<i> Jawaban </i> left child: `2 * 2 + 1 = 5`, Right child: `2 * 2 + 2 = 6`
+
 5. Apa kegunaan statement int idxLast = 6 pada praktikum 2 percobaan nomor 4?
+<i> Jawaban </i> untuk menetapkan bahwa indeks terakhir yang terisi dalam array data adalah `6`.
 
 ## Tugas Praktikum 
 1. Buat method di dalam class BinaryTree yang akan menambahkan node dengan cara 
