@@ -161,8 +161,12 @@ Size : 0
 
 ## Pertanyaan 1 
 1. Jelaskan perbedaan antara single linked list dengan double linked lists! 
+
+<i> Jawaban </i> Single Linked list hanya memiliki satu pointer yaitu next, sedankan double linked list memiliki dua pointer yaitu prev dan next.
+
 2. Perhatikan class Node, di dalamnya terdapat atribut next dan prev. Untuk apakah atribut 
-tersebut? 
+tersebut? <i> Jawaban : </i> Atribut next dan prev sebagai pointer / sebagai link yang bertujuan untuk adanya alamat maka node akan tersambung dengan node lain
+
 3. Perhatikan konstruktor pada class DoubleLinkedLists. Apa kegunaan inisialisasi atribut head dan 
 size seperti pada gambar berikut ini? 
 ```java
@@ -171,21 +175,34 @@ size seperti pada gambar berikut ini?
         size = 0;
     }
 ```
+
+<i> Jawaban : </i>  Memastikan bahwa keadaan double linked list masih dalam keadaan kosong baik dari tidak ada head maupun tidak ada size / isi.
+
 4. Pada method addFirst(), kenapa dalam pembuatan object dari konstruktor class Node prev 
 dianggap sama dengan null? 
-
 Node newNode = new Node(null, item, head);
+
+<i> Jawaban : </i> Karena menandakan bahwa node masih baru dan belum memiliki pasangan sebelumnya. 
+
 5. Perhatikan pada method addFirst().  Apakah arti statement head.prev = newNode ? 
+
+<i> Jawaban </i> jika selesai melakukan addFirst maka akan dilakukan head.prev = newNode, yang berarti head lama akan memiliki node baru di bagian kiri head lama.
+
 6. Perhatikan isi method addLast(), apa arti dari pembuatan object Node dengan mengisikan 
 parameter prev dengan current, dan next dengan null? 
-Node newNode = new Node(current, item, null);  
+Node newNode = new Node(current, item, null);
+
+<i> Jawaban </i> node tersebut merupakan node baru yang memiliki current di prev karena memiliki link untuk node sebelumnya dan next bernilai null maka node tersebut tidak mempunyai node setelah dari node baru tersebut.
+
 7. Pada method add(), terdapat potongan kode program sebagai berikut:
 ```java
 if (current.prev == null) {
-    Node newNode
+    Node = newNode;
 }
 ```
 jelaskan maksud dari bagian kode itu.
+
+<i> Jawaban </i>  Mengecek node saat ini pada pointer prev bernilai null, dan akan menjadikan Node tersebut menjadi Node baru.
 
 ## Percobaan 2
 ### Menambah method removeFirst() pada class DoubleLinkedLists
@@ -291,7 +308,13 @@ Size : 1
 1. Apakah maksud statement berikut pada method removeFirst()? 
 head = head.next; 
 head.prev = null; 
+
+<i> Jawaban : </i> Node tersebut merupakan head lama yang akan menunjukkan head baru setelah head lama dihapus, dan prev / sebelum dari head itu bernilai null atau tidak ada node. 
+
 2. Bagaimana cara mendeteksi posisi data ada pada bagian akhir pada method removeLast()? 
+
+<i> Jawaban </i> dengan cara memeriksa apakah list tersebut kosong jika iya maka akan masuk ke Exception namun jika tidak akan dilakukan pendeteksi dengan cara head.next == null yang berarti hanya satu elemen atur head menjadi null dan size akan berkurang. 
+
 3. Jelaskan alasan potongan kode program di bawah ini tidak cocok untuk perintah remove!
 ```java
     Node tmp = head.next;
@@ -299,11 +322,16 @@ head.prev = null;
     head.next = tmp.next;
     tmp.next.prev = head;
 ```
+
+<i> Jawaban </i> karena hanya mengatur ulang pointer dari head dan tmp.next, tetapi tidak memperhatikan dimana elemen yang akan dihapus adalah satu - satunya elemen dalam list atau elemen terakhir.
+
 4. Jelaskan fungsi kode program berikut ini pada fungsi remove!
 ```java
     current.prev.next = current.next;
     current.next.prev = current.prev;
 ``` 
+<i> Jawaban </i>  Untuk memastikan bahwa kedua sisi pointer antara node sebelum dan setelah current tetap terjaga sehingga integritas list tidak terganggu setelah penghapusan.
+
 ## Percobaan 3
 ### Menambahkan method getLast() pada Class DoubleLinkedLists
 ```java
@@ -378,10 +406,27 @@ Data indeks ke-1 pada Linked Lists adalah: 40
 ```
 ## Pertanyaan 3
 1. Jelaskan method size() pada class DoubleLinkedLists! 
+<i> Jawaban </i>  Method ini akan mengembalikan nilai integer yang mewakili banyaknya elemen yang ada di dalam DoubleLinkedLists tersebut.
+
 2. Jelaskan cara mengatur indeks pada double linked lists supaya dapat dimulai dari indeks ke- 
 1! 
 3. Jelaskan perbedaan karakteristik fungsi Add pada Double Linked Lists dan Single Linked Lists!  
 4. Jelaskan perbedaan logika dari kedua kode program di bawah ini! 
+```java
+a.    public boolean isEmpty() {
+        return head == null;
+        }
+
+b.  public boolean isEmpty() {
+    if (size == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+```
+
+<i> Jawaban : </i> Untuk method yang A menandakan bahwa jika dalam keadaam kosong karena tidak ada head atau head bernilai null, sedangkan method yang B adalah jika ukurannya / size nya 0 maka posisi Linkelist tersebut masih dalam keadaan kosong namun jika tidak maka akan dilanjutkan untuk method berikutnya.
 
 ## Tugas Praktikum
 1. Buat program antrian vaksinasi menggunakan queue berbasis double linked list sesuai ilustrasi 
