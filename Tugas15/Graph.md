@@ -265,14 +265,17 @@ PS D:\GitHub\Algoritma-dan-Struktur-Data>
 1. Perbaiki kode program Anda apabila terdapat error atau hasil kompilasi kode tidak sesuai! 
 2. Pada class Graph, terdapat atribut list[] bertipe DoubleLinkedList. Sebutkan tujuan pembuatan 
 variabel tersebut!
-<i> Jawaban </i>
+<i> Jawaban </i> untuk menyimpan daftar node yang terhubung dengan setiap node dalam graph dan kita dapat menghapus dan menambah edge.
 
 3. Jelaskan alur kerja dari method removeEdge! 
-<i> Jawaban </i>
+<i> Jawaban </i> Method ini menerima dua parameter, asal dan tujuan, yang mewakili node asal dan tujuan dari edge yang akan dihapus.
+Method ini melakukan iterasi melalui semua node dalam graph menggunakan loop for.
+Ketika node dengan indeks yang sama dengan tujuan ditemukan, method remove dipanggil pada DoubleLinkedList yang terkait dengan node asal untuk menghapus referensi ke node tujuan.
+Ini menghapus hubungan antara node asal dan tujuan, efektif menghapus edge dari graph.
 
 4. Apakah alasan pemanggilan method addFirst() untuk menambahkan data, bukan method add 
 jenis lain saat digunakan pada method addEdge pada class Graph?
-<i> Jawaban </i>
+<i> Jawaban </i> membantu menjaga graph agar selalu cepat dan efisien saat melakukan perubahan saat menambahkan data.
 
 5. Modifikasi kode program sehingga dapat dilakukan pengecekan apakah terdapat jalur antara 
 suatu node dengan node lainnya, seperti contoh berikut (Anda dapat memanfaatkan Scanner). 
@@ -377,14 +380,14 @@ PS D:\GitHub\Algoritma-dan-Struktur-Data>
 1. Perbaiki kode program Anda apabila terdapat error atau hasil kompilasi kode tidak sesuai! 
 2. Apa jenis graph yang digunakan pada Percobaan 2?
 
-<i> Jawaban </i>
+<i> Jawaban </i> Graph Matriks 
 
 3. Apa maksud dari dua baris kode berikut? 
 ```java
 gdg.makeEdge(1, 2, 70);              
 gdg.makeEdge(2, 1, 80);
 ```
-<i> Jawaban </i>
+<i> Jawaban </i> method makeEdge() memiliki parameter yaitu int asal, int tujuan dan int jarak. Yang menginisialisasikan sebagai contoh (1, 2, 70) bahwa asal berada pada indeks ke 1 (1 yang berarti gedung B), tujuan ke indeks 2 ( Gedung C), dan jarak yaitu 70.
 
 4. Modifikasi kode program sehingga terdapat method untuk menghitung degree, termasuk 
 inDegree dan outDegree!
